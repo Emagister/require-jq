@@ -6,7 +6,8 @@
 define([], function() {
   return {
       load : function(name, req, load) {
-          req(['jquery'], function() {
+        var dep = req.specified('packages/jquery') ? 'packages/jquery' : 'jquery';
+          req([dep], function() {
               req([name], function (value) {
                   load(value);
               });
